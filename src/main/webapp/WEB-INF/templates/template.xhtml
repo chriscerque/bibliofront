@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Bibliothèque - <ui:insert name="titre"/></title>
+</h:head>
+
+<body>
+
+<div class="header">
+    <h1>Ma Bibliothèque</h1>
+    <h:form id="form-menu">
+        <p:growl id="growl" globalOnly="true" showDetail="true"/>
+        <p:menubar>
+            <p:menuitem value="Accueil" icon="pi pi-fw pi-home" action="/index.xhtml?faces-redirect=true" rendered="#{sessionBean.user!=null}"/>
+            <p:menuitem value="Livres" icon="pi pi-fw pi-book" action="/livre/liste.xhtml?faces-redirect=true" rendered="#{sessionBean.user!=null}"/>
+            <p:menuitem value="Auteurs" icon="pi pi-fw pi-user" action="/auteur/liste.xhtml?faces-redirect=true" rendered="#{sessionBean.user!=null}"/>
+            <p:menuitem value="Connexion"
+                        icon="pi pi-fw pi-lock"
+                        action="/security/login.xhtml?faces-redirect=true" rendered="#{sessionBean.user==null}"/>
+            <p:menuitem value="Déconnexion (#{sessionBean.user.login})" icon="pi pi-fw pi-lock"
+                        action="#{sessionBean.logout}" rendered="#{sessionBean.user!=null}"/>
+        </p:menubar>
+    </h:form>
+</div>
+
+<article class="content">
+    <ui:insert name="corps"/>
+</article>
+
+</body>
+</html>

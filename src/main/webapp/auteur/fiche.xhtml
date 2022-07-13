@@ -1,0 +1,33 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="titre">Form Auteur</ui:define>
+
+    <ui:define name="corps">
+        <h2>Création d'auteur</h2>
+        <h:form>
+            <p:panelGrid columns="3">
+                <p:outputLabel for="nom" value="Nom"/>
+                <p:inputText id="nom" value="#{auteurFicheBean.auteur.nom}"/>
+                <p:message for="nom"/>
+
+                <p:outputLabel for="prenom" value="Prénom"/>
+                <p:inputText id="prenom" value="#{auteurFicheBean.auteur.prenom}"/>
+                <p:message for="prenom"/>
+
+                <p:outputLabel for="dateNaissance" value="Date de naissance"/>
+                <p:calendar id="dateNaissance" value="#{auteurFicheBean.auteur.dateDeNaissance}" pattern="dd/MM/yyyy"/>
+                <p:message for="dateNaissance"/>
+            </p:panelGrid>
+
+            <p:commandButton value="Annuler" styleClass="ui-button-secondary" immediate="true"
+                             action="/auteur/liste.xhtml?faces-redirect=true"/>
+            <p:commandButton value="Valider" actionListener="#{auteurFicheBean.valider()}"
+                             action="/auteur/liste.xhtml?faces-redirect=true" update="@all"/>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

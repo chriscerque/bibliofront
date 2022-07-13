@@ -1,0 +1,17 @@
+<ui:composition lang="Fr" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:row>
+        <p:column>
+            <p:outputLabel for="#{id}" value="#{label}"/>
+        </p:column>
+        <p:column>
+            <p:inputText id="#{id}" value="#{value}"/>
+        </p:column>
+        <p:column>
+            <p:message for="#{id}"/>
+        </p:column>
+    </p:row>
+
+</ui:composition>
